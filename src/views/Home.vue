@@ -7,6 +7,7 @@
       :token="token"
       :preMute="config.mute"
       :preCameraOff="config.cameraOff"
+      :isHost="config.isHost"
       @leave-meeting="handleLeaveMeeting"
     />
     <main-page
