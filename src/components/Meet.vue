@@ -17,12 +17,14 @@
         enableDualStream
       >
         <agora-audio-sender
+         v-if="isHost"
           :mute="mute"
           @track-created="handleAudioTrackCreated"
           ref="audioSender"
         ></agora-audio-sender>
         <agora-audio-receiver ref="audioReceiver" :refuse="refuseList" />
         <agora-video-sender
+           v-if="isHost"
           :cameraOff="cameraIsClosed"
           customizationPlayer
           ref="videoSender"
@@ -36,7 +38,7 @@
         ></agora-video-receiver>
       </agora>
       <agora
-        v-if="openScreenSharing"
+         v-if="isHost"
         :channel="channel"
         :appid="appid"
         :token="token"
@@ -142,7 +144,7 @@
         </div>
       </div>
     </div>
-    <div class="user-list" v-show="showExpandUserList">
+    <div v-if="isHost" class="user-list" v-show="showExpandUserList">
       <p @click="handleCustom">All users in the meeting :</p>
       <ul>
         <li v-for="(item, index) in users" :key="index">
@@ -170,7 +172,7 @@
         </li>
       </ul>
     </div>
-    <div class="banner">
+    <div v-if="isHost" class="banner">
       <div class="test-button" @click="handleOpenNewPage">
         (test) open new page
       </div>
@@ -220,6 +222,10 @@ export default {
     },
     token: {
       type: [String, null]
+    },
+    isHost: {
+      type: Boolean,
+      default: false
     },
     preMute: {
       type: Boolean,

@@ -47,7 +47,8 @@
     <div class="operation">
       <p class="question">Are you ready to join meeting ?</p>
       <p class="tip">Enjoy the meeting time</p>
-      <div class="join-button" @click="handleJoin">Join now</div>
+      <div class="join-button" @click="handleJoinClient">Client Join now</div>
+      <div class="join-button" @click="handleJoinHost">Host Join now</div>
     </div>
 
     <div class="footer">
@@ -113,11 +114,20 @@ export default {
         window.cancelAnimationFrame(id);
       });
     },
-    handleJoin() {
+    handleJoinClient() {
       this.$emit("join-meeting", {
         channel:this.channel,
         mute:this.mute,
-        cameraOff: this.cameraOff
+        cameraOff: this.cameraOff,
+        isHost: false
+      });
+    },
+    handleJoinHost() {
+      this.$emit("join-meeting", {
+        channel:this.channel,
+        mute:this.mute,
+        cameraOff: this.cameraOff,
+        isHost: true
       });
     },
     handleMpClick() {

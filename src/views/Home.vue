@@ -7,6 +7,7 @@
       :token="token"
       :preMute="config.mute"
       :preCameraOff="config.cameraOff"
+      :isHost="config.isHost"
       @leave-meeting="handleLeaveMeeting"
     />
     <main-page
@@ -48,7 +49,7 @@ export default {
       immediate: true,
       handler(newV) {
         if (!newV || newV === "null" || newV === undefined) {
-          const appid = window.prompt("Input your appid:");
+          const appid = "8a540bb507b642609834cbdea8963e5c"; //window.prompt("Input your appid:");
           if (appid) {
             localStorage.setItem("appid", appid);
             this.appid = appid;
@@ -62,7 +63,7 @@ export default {
       immediate: true,
       handler(newV) {
         if (!newV || newV === "null" || newV === undefined) {
-          const channel = window.prompt("Input your room channel:");
+          const channel = "freedata"; //window.prompt("Input your room channel:");
           if (channel) {
             sessionStorage.setItem("channel", channel);
             this.channel = channel;
@@ -76,7 +77,7 @@ export default {
       immediate: true,
       handler(newV) {
         if (!newV && newV !== null) {
-          const token = window.prompt("Input your token:");
+          const token = "b3e0b93686b94fd3a41361a9cdef673c"; //window.prompt("Input your token:");
           if (token) {
             localStorage.setItem("token", token);
             this.token = token === "null" ? null : token === null ? undefined : token;
