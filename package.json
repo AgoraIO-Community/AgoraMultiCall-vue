@@ -12,6 +12,7 @@
     "agora-rtc-sdk-ng": "^4.4.0",
     "agora-rtc-vue": "^0.2.45",
     "core-js": "^3.6.5",
+    "eslint-plugin-html": "^6.2.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0"
   },
